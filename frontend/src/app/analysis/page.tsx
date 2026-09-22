@@ -1,8 +1,12 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import type { MouseEvent } from "react";
+
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  "http://localhost:8000";
 /* ============================================================
    COLOR PALETTE
 ============================================================ */
@@ -3328,7 +3332,7 @@ function EventWindowPreview({ event }: { event: GrowthEvent | null }) {
    MAIN PAGE
 ============================================================ */
 
-export default function Home() {
+function AnalysisContent() {
   const searchParams = useSearchParams();
   const channelUrl = searchParams.get("url")?.trim() || "";
 
@@ -3358,7 +3362,7 @@ export default function Home() {
 
     try {
       const response = await fetch(
-        `http://localhost:8000/api/analyze?channel_url=${encodeURIComponent(channelUrl)}`,
+        `${API_URL}/api/analyze?channel_url=${encodeURIComponent(channelUrl)}`,
         { cache: "no-store" }
       );
 
@@ -3398,7 +3402,7 @@ export default function Home() {
 
     try {
       const response = await fetch(
-        `http://localhost:8000/api/research?channel_url=${encodeURIComponent(channelUrl)}`,
+        `${API_URL}/api/research?channel_url=${encodeURIComponent(channelUrl)}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -3850,5 +3854,20 @@ export default function Home() {
         </div>
       </div>
     </main>
+  );
+}
+export default function Home() {
+  return (
+    <Suspense
+      fallback={
+        <main className="flex min-h-screen items-center justify-center bg-[#F5EEE4] text-[#1D4248]">
+          <p className="text-sm font-bold">
+            Loading analysis...
+          </p>
+        </main>
+      }
+    >
+      <AnalysisContent />
+    </Suspense>
   );
 }
