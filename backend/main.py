@@ -42,7 +42,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",
         "http://127.0.0.1:3000",
-        "https://r-a-ise-ai-spike-and-growth-analyser-j4njrpuan-adarshveer-singh.vercel.app",
+        "https://r-a-ise-ai-spike-and-growth-analyse.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
