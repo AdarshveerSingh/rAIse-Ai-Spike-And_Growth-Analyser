@@ -1,0 +1,29 @@
+# Environment
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Node
+node_modules/
+.next/
+out/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Local cache
+cache/
+
+# Generated research outputs
+research_outputs/

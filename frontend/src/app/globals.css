@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+:root {
+  background: #08090d;
+  color: white;
+}
+:root {
+  --light-blue: #A2CCCE;
+  --mint-leaf: #54C29D;
+  --linen: #F5EEE4;
+  --vibrant-coral: #F86158;
+  --iron-grey: #354244;
+  --banana-cream: #F7E141;
+  --dark-teal: #1D4248;
+}
+body {
+  margin: 0;
+  background: #08090d;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.stat-card {
+  @apply rounded-2xl border border-white/10 bg-white/[0.03] p-5;
+}
+
+.stat-card p {
+  @apply text-sm text-gray-500;
+}
+
+.stat-card h2 {
+  @apply text-3xl font-bold mt-4;
+}
+
+.stat-card span {
+  @apply text-xs text-gray-600;
+}
